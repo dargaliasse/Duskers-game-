@@ -1,3 +1,48 @@
+def robot_menu():
+    robot_menu_printing = """+==============================================================================+
+$   $$$$$$$   $  |  $   $$$$$$$   $  |  $   $$$$$$$   $
+$$$$$     $$$$$  |  $$$$$     $$$$$  |  $$$$$     $$$$$
+    $$$$$$$      |      $$$$$$$      |      $$$$$$$
+   $$$   $$$     |     $$$   $$$     |     $$$   $$$
+   $       $     |     $       $     |     $       $
++==============================================================================+
+|                  [Ex]plore                          [Up]grade                |
+|                  [Save]                             [M]enu                   |
++==============================================================================+"""
+
+    while True:
+        print(robot_menu_printing)
+        user_input = input("Your command: ").lower()
+
+        if user_input == "m":
+            while True:
+                print("[Save]")
+                print("[Main] Menu")
+                print("[Back]")
+                print("[Exit]")
+
+                menu_command = input("Your command: ").lower()
+
+                if menu_command == "back":
+                    break
+                elif menu_command == "main":
+                    return "main"
+                elif menu_command == "save":
+                    return "exit"
+                elif menu_command == "exit":
+                    return "exit"
+                else:
+                    print("Invalid input")
+        elif user_input == "save":
+            return "exit"
+        elif user_input == "ex":
+            return "exit"
+        elif user_input == "up":
+            return "exit"
+        else:
+            print("Invalid input")
+
+
 def play(name):
     print(f"Greetings, {name}!")
 
@@ -6,17 +51,6 @@ def play(name):
 [Yes] [No] Return to Main[Menu] """).lower()
 
         if ready_to_play == "yes":
-            print("""__________(LOG)__________________________________________________(LOG)__________
-+==============================================================================+
-
-
-                                 (ROBOT IMAGES)
-
-
-+==============================================================================+
-|                  [Ex]plore                          [Up]grade                |
-|                  [Save]                             [M]enu                   |
-+==============================================================================+""")
             return "started"
         elif ready_to_play == "menu":
             return "menu"
@@ -46,24 +80,37 @@ def main():
         user_command = input("Your command: ").lower()
 
         if user_command == "play":
-            result = play(input("What is your name? "))
+            player_name = input("What is your name? ")
+            result = play(player_name)
+
             if result == "started":
-                return
+                robot_result = robot_menu()
+
+                if robot_result == "main":
+                    continue
+                elif robot_result == "exit":
+                    print("Goodbye!")
+                    return
+
         elif user_command == "exit":
             print("Goodbye!")
             return
+
         elif user_command == "high":
             while True:
                 print("No scores to display.")
                 print("[Back]")
                 high_command = input("Your command: ").lower()
+
                 if high_command == "back":
                     break
                 else:
                     print("Invalid input")
+
         elif user_command == "help":
             print("Coming SOON! Thanks for playing!")
             return
+
         else:
             print("Invalid input")
 
