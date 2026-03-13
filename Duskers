@@ -1,0 +1,44 @@
+def play(name):
+    print(f"Greetings, {name}!")
+
+    while True:
+        ready_to_play = input("""Are you ready to begin?
+    [Yes] [No]""")
+        if ready_to_play.lower() == "yes":
+            print("Great, now let's go code some more ;)")
+            return
+        else:
+            print("Invalid input")
+
+
+
+def main():
+    susi = ("""+=======================================================================+
+  ######*   ##*   ##*  #######*  ##*  ##*  #######*  ######*   #######*
+  ##*  ##*  ##*   ##*  ##*       ##* ##*   ##*       ##*  ##*  ##*
+  ##*  ##*  ##*   ##*  #######*  #####*    #####*    ######*   #######*
+  ##*  ##*  ##*   ##*       ##*  ##* ##*   ##*       ##*  ##*       ##*
+  ######*    ######*   #######*  ##*  ##*  #######*  ##*  ##*  #######*
+                      (Survival ASCII Strategy Game)
++=======================================================================""")# Write your code here
+    commands = {
+        1: "Play",
+        2: "Exit"
+    }
+    print(susi)
+    for key, value in commands.items():
+        print(f"[{value}]")
+    while True:
+        user_command = input("Your command: ").lower()
+        if user_command == "play":
+            play(input("What is your name? "))
+            return
+        elif user_command == "exit":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid input")
+
+main()
+
+
